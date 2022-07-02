@@ -178,6 +178,7 @@
             this.buttonNew.TabIndex = 13;
             this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // buttonDelete
             // 
@@ -187,6 +188,7 @@
             this.buttonDelete.TabIndex = 13;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonDelete_MouseClick);
             // 
             // groupSearchInput
             // 
@@ -210,6 +212,7 @@
             this.buttonClearSearch.TabIndex = 8;
             this.buttonClearSearch.Text = "Clear";
             this.buttonClearSearch.UseVisualStyleBackColor = true;
+            this.buttonClearSearch.Click += new System.EventHandler(this.buttonClearSearch_Click);
             // 
             // buttonSearch
             // 
@@ -219,6 +222,7 @@
             this.buttonSearch.TabIndex = 7;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // labelKeyword
             // 
@@ -295,6 +299,7 @@
             this.comboBoxFilterByCountry.Name = "comboBoxFilterByCountry";
             this.comboBoxFilterByCountry.Size = new System.Drawing.Size(361, 28);
             this.comboBoxFilterByCountry.TabIndex = 10;
+            this.comboBoxFilterByCountry.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterByCountry_SelectedIndexChanged);
             // 
             // comboBoxFilterByCity
             // 
@@ -305,6 +310,7 @@
             this.comboBoxFilterByCity.Size = new System.Drawing.Size(361, 28);
             this.comboBoxFilterByCity.TabIndex = 11;
             this.comboBoxFilterByCity.TabStop = false;
+            this.comboBoxFilterByCity.SelectionChangeCommitted += new System.EventHandler(this.comboBoxFilterByCity_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -334,6 +340,7 @@
             this.dataGridViewMembers.RowTemplate.Height = 29;
             this.dataGridViewMembers.Size = new System.Drawing.Size(1664, 386);
             this.dataGridViewMembers.TabIndex = 14;
+            this.dataGridViewMembers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewMembers_CellMouseDoubleClick);
             // 
             // FormMemberManagement
             // 
@@ -361,6 +368,7 @@
             this.Controls.Add(this.lableMemberId);
             this.Name = "FormMemberManagement";
             this.Text = "FormMemberManagement";
+            this.Load += new System.EventHandler(this.FormMemberManagement_Load);
             this.groupSearchInput.ResumeLayout(false);
             this.groupSearchInput.PerformLayout();
             this.groupBoxSearchBy.ResumeLayout(false);
