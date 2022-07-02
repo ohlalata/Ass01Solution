@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
@@ -84,6 +83,7 @@
             this.buttonLogin.TabIndex = 3;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonLogin_MouseClick);
             // 
             // buttonCancel
             // 
@@ -93,6 +93,7 @@
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonLogin_MouseClick);
             // 
             // FormLogin
             // 
@@ -105,7 +106,6 @@
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelEmail);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";
             this.Text = "Login";
             this.ResumeLayout(false);
