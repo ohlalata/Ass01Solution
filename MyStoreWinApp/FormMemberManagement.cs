@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using BusinessObject;
+using DataAccess.Repository;
 
 namespace MyStoreWinApp
 {
     public partial class FormMemberManagement : Form
     {
-        public FormMemberManagement()
+        private IMemberRepository MemberRepository { get; init; }
+        private readonly BindingSource _bindingSource = new BindingSource();
+
+        private IEnumerable<MemberObject>? _listMembers;
+        private IEnumerable<MemberObject>? _searchResult;
+        private List<string>? _cityFilter;
+        private List<string>? _countryFilter;
+        public FormMemberManagement(IMemberRepository memberRepository)
         {
+            MemberRepository = memberRepository;
             InitializeComponent();
         }
     }

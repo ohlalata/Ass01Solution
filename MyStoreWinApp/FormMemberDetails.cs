@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using BusinessObject;
+using DataAccess.Repository;
 
 namespace MyStoreWinApp
 {
     public partial class FormMemberDetails : Form
     {
-        public FormMemberDetails()
+        public bool IsUpdateMode { get; init; }
+        private IMemberRepository MemberRepository { get; init; }
+        public bool IsCreateMode { get; init; }
+        public MemberObject? MemberParam { get; init; }
+        public FormMemberDetails(IMemberRepository memberRepository)
         {
+            MemberRepository = memberRepository;
             InitializeComponent();
         }
     }
