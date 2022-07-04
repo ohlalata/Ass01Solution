@@ -54,9 +54,10 @@ namespace MyStoreWinApp
                         MemberParam = memberAccount
                     };
                     Hide();
-                    if (formMemberDetails.ShowDialog() == DialogResult.Cancel)
+                    DialogResult dialogResult = formMemberDetails.ShowDialog();
+                    if (dialogResult == DialogResult.OK || dialogResult == DialogResult.Cancel)
                     {
-                        Close();
+                        this.Close();
                     }
                 }
                 else
