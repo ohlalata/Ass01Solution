@@ -16,7 +16,7 @@ namespace MyStoreWinApp
             {
                 string email = textBoxEmail.Text.Trim();
                 string password = textBoxPassword.Text.Trim();
-                bool isLoginSuccess = false;
+                bool isAdminLoginSuccess = false;
 
                 if (email.Length == 0 || password.Length == 0)
                 {
@@ -31,14 +31,30 @@ namespace MyStoreWinApp
                 MemberObject adminAccount = _memberRepository.GetDefaultAdminAccount();
                 if (email.Equals(adminAccount.Email) && password.Equals(adminAccount.Password))
                 {
-                    isLoginSuccess = true;
+                    isAdminLoginSuccess = true;
                 }
 
-                if (isLoginSuccess)
+                if (isAdminLoginSuccess)
                 {
                     FormMemberManagement formMemberManagement = new FormMemberManagement(_memberRepository);
                     this.Hide();
                     if (formMemberManagement.ShowDialog() == DialogResult.Cancel)
+                    {
+                        Close();
+                    }
+                    return;
+                }
+
+                MemberObject? memberAccount = _memberRepository.FindAccountMemberByEmail(email);
+                if (memberAccount != null && memberAccount.Password.Equals(password))
+                {
+                    FormMemberDetails formMemberDetails = new FormMemberDetails(_memberRepository)
+                    {
+                        IsUpdateMode = true,
+                        MemberParam = memberAccount
+                    };
+                    Hide();
+                    if (formMemberDetails.ShowDialog() == DialogResult.Cancel)
                     {
                         Close();
                     }

@@ -12,5 +12,7 @@ namespace DataAccess.Repository
         public MemberObject? SearchMemberById(int id) => MyStoreDbContext.GetDbContext.FindAccountMemberById(id);
         public MemberObject GetDefaultAdminAccount() => MyStoreDbContext.GetDbContext.GetDefaultAdminAccount();
         public MemberObject? SearchMemberByIdOrEmail(int id, string email) => MyStoreDbContext.GetDbContext.FindAccountMemberByIdOrEmail(id, email);
+        public MemberObject? FindAccountMemberByEmail(string email) => MyStoreDbContext.GetDbContext.FindAccountMemberByEmail(email);
+
     }
 }

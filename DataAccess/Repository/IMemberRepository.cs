@@ -11,5 +11,6 @@ namespace DataAccess.Repository
         public MemberObject? SearchMemberById(int id);
         public MemberObject GetDefaultAdminAccount();
         public MemberObject? SearchMemberByIdOrEmail(int id, String email);
+        public MemberObject? FindAccountMemberByEmail(string email);
     }
 }

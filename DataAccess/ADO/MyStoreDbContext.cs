@@ -137,6 +137,44 @@ namespace DataAccess.ADO
             return account;
         }
 
+        public MemberObject? FindAccountMemberByEmail(string email)
+        {
+            if (DataProvider == null)
+            {
+                return null;
+            }
+            MemberObject? account = null;
+            IDataReader? dataReader = null;
+            string SQLSelect = "SELECT id, full_name, password, email, city, country FROM members WHERE email LIKE @Email";
+            try
+            {
+                var param = DataProvider.CreateParameter("@Email", 50, email, DbType.String);
+                dataReader = DataProvider.GetDataReader(SQLSelect, CommandType.Text, out Connection, param);
+                if (dataReader.Read())
+                {
+                    account = new MemberObject
+                    {
+                        MemberId = dataReader.GetInt32(0),
+                        MemberName = dataReader.GetString(1),
+                        Password = dataReader.GetString(2),
+                        Email = dataReader.GetString(3),
+                        City = dataReader.GetString(4),
+                        Country = dataReader.GetString(5)
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                dataReader?.Close();
+                CloseConnection();
+            }
+            return account;
+        }
+
         public bool CreateMember(MemberObject account)
         {
             try
