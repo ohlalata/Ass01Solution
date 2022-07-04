@@ -17,7 +17,7 @@ CREATE TABLE members(
 );
 
 INSERT INTO MemberDB.dbo.members (id, full_name, password, email, city, country)
-VALUES (1, N'Bùi Nhật Tân', N'tannbnse150170', N'tannbnse150170@fpt.edu.vn', N'Hồ Chí Minh', N'Việt Nam');
+VALUES (1, N'Nguyễn Bùi Nhật Tân', N'tannbnse150170', N'tannbnse150170@fpt.edu.vn', N'Hồ Chí Minh', N'Việt Nam');
 
 INSERT INTO MemberDB.dbo.members (id, full_name, password, email, city, country)
 VALUES (2, N'Nguyễn Minh Trung', N'trungnmse150182', N'trungnmse150182@fpt.edu.vn', N'Buôn Ma Thuột', N'Việt Nam');
