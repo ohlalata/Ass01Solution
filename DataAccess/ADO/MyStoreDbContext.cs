@@ -226,22 +226,19 @@ namespace DataAccess.ADO
                 {
                     return false;
                 }
-                MemberObject? existAccount = FindAccountMemberByIdOrEmail(account.MemberId, account.Email);
+                MemberObject? existAccountById = FindAccountMemberById(account.MemberId);
 
-                if (existAccount == null)
+                if (existAccountById == null)
                 {
                     throw new Exception("This account not exist.");
+
                 }
-                else if (account != null && existAccount.MemberId != account.MemberId)
+                MemberObject? existAccountByEmail = FindAccountMemberByEmail(account.Email.ToLower());
+                if (existAccountByEmail != null && existAccountByEmail.MemberId != existAccountById.MemberId)
                 {
                     throw new Exception("Email already used by another account.");
                 }
 
-
-                if (account == null)
-                {
-                    return false;
-                }
                 string SQLUpdate = "UPDATE members SET full_name=@FullName, password=@Password, email=@Email, city=@City, country=@Country WHERE id=@Id";
                 var parameters = new List<SqlParameter>
                 {
