@@ -15,6 +15,7 @@ namespace MyStoreWinApp
             MemberRepository = memberRepository;
             InitializeComponent();
         }
+
         private void FormMemberDetails_Load(object sender, EventArgs e)
         {
             buttonCreate.Visible = IsCreateMode;
@@ -87,6 +88,56 @@ namespace MyStoreWinApp
                 City = city,
                 Country = country
             };
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MemberObject member = GetCurrentMemberObject();
+                bool isCreatedSuccess = MemberRepository.AddMember(member);
+                if (isCreatedSuccess)
+                {
+                    MessageBox.Show(@"Create member success.", @"Create Member", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message, @"Create member", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, @"Create member", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MemberObject member = GetCurrentMemberObject();
+                bool isUpdatedSuccess = MemberRepository.UpdateMember(member);
+                if (isUpdatedSuccess)
+                {
+                    MessageBox.Show(@"Updated member success.", @"Update Member", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message, @"Update member", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, @"Create member", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
